@@ -28,7 +28,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__booking_ids
 msgid " Reservas"
-msgstr ""
+msgstr "Clases"
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_needaction
@@ -917,7 +917,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_tree_view
 msgid "Reservas"
-msgstr ""
+msgstr "Clases"
 
 #. module: rc_uy_base
 #: code:addons/rc_uy_base/utils/expression.py:0

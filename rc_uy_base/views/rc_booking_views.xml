@@ -25,6 +25,9 @@
                                 attrs="{'invisible': ['|',('state', '!=', 'confirmed'),('is_cancellable', '=', True)]}"
                                 confirm="¿Confirma la cancelación de la reservación realizada?"
                                 groups="rc_uy_base.rc_admin_user_group"/>
+                        <button string="Agendar Examen" name="action_create_test_drive" type="object"
+                                attrs="{'invisible': ['|',('state', '!=', 'confirmed'),('has_test_drive', '=', True)]}"
+                                icon="fa-calendar-check-o" groups="rc_uy_base.rc_admin_user_group"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
                     </header>
                     <sheet>
@@ -45,7 +48,7 @@
                                 <field name="date_stop" attrs="{'invisible': [('state', '=', 'draft')]}"/>
                                 <field name="is_cancellable" invisible="1"/>
                                 <field name="is_admin_user" invisible="1"/>
-
+                                <field name="has_test_drive" invisible="1"/>
                             </group>
                         </group>
                     </sheet>
@@ -94,7 +97,7 @@
                     <field name="schedule_id" optional="show"/>
                     <field name="date_start" optional="hide"/>
                     <field name="date_stop" optional="hide"/>
-                    <field name="consumer_id"/>
+                    <field name="consumer_id" optional="show"/>
                     <field name="state"/>
                     <field name="resource_id" optional="show"/>
                 </tree>

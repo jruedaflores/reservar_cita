@@ -39,16 +39,21 @@ class RcBooking(models.Model):
     date_stop = fields.Datetime(related='schedule_id.date_stop', store=False)
     is_cancellable = fields.Boolean('Es cancelable', compute='_compute_boolean_fields')
     is_admin_user = fields.Boolean('Es usuario admin', compute='_compute_boolean_fields', default=_default_admin_user)
+    has_test_drive = fields.Boolean('Tiene exámenes activos?', default=False)
 
-    _sql_constraints = [
-        ('name_uniq', 'unique (consumer_id,schedule_id,state)', """¡El valor ya existe!"""),
-    ]
+    # _sql_constraints = [
+    #     ('name_uniq', 'unique (consumer_id,schedule_id,state)', """¡El valor ya existe!"""),
+    # ]
 
     def unlink(self):
         for item in self:
             if item.state != 'draft':
                 raise UserError(UNLINK_USER_ERROR_MSG)
         return super(RcBooking, self).unlink()
+
+    def action_automatic_confirmed(self):
+        self.action_confirmed()
+        self.has_test_drive = True
 
     def action_confirmed(self):
         if self.state != 'draft':
@@ -92,6 +97,10 @@ class RcBooking(models.Model):
     def _common_action_canceled(self):
         self.sudo().schedule_id.state = 'available'
         self.state = 'canceled'
+        if self.has_test_drive:
+            test_drive_ids = self.env['rc.consumer.test.drive'].search([('booking_id', '=', self.id)])
+            for test_id in test_drive_ids:
+                test_id.action_automatic_canceled()
 
     def _common_compute_is_cancellable(self):
         is_cancellable = False
@@ -113,6 +122,21 @@ class RcBooking(models.Model):
             if rec.state != 'confirmed':
                 raise UserError(_("Para realizar dicha operación las Reservas deben estar en estado Confirmada."))
             rec._common_action_canceled()
+
+    def action_create_test_drive(self):
+        for rec in self:
+            if rec.state == 'confirmed':
+                test_values = {
+                    'consumer_id': self.consumer_id.id,
+                    'type': 'practical',
+                    'resource_id': self.resource_id.id,
+                    'booking_id': self.id,
+                    'date_start': self.date_start,
+                    'date_stop': self.date_stop,
+                }
+                test_drive_id = self.env['rc.consumer.test.drive'].create(test_values)
+                test_drive_id.action_automatic_scheduled()
+                self.has_test_drive = True
 
     @api.onchange('consumer_id')
     def onchange_consumer_id(self):
