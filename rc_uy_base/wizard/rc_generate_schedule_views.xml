@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="rc_generate_schedule_view_form" model="ir.ui.view">
+        <field name="name">rc.generate.schedule.form</field>
+        <field name="model">rc.generate.schedule</field>
+        <field name="arch" type="xml">
+            <form string="Generar agenda">
+                <notebook>
+                    <page name="dias" string="Días">
+                        <group>
+                            <field name="rc_generate_schedule_day_ids" nolabel="1">
+                                <tree>
+                                    <field name="day"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="day"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </page>
+                    <page name="horarios" string="Horarios">
+                        <group>
+                            <field name="rc_generate_schedule_hour_ids" nolabel="1">
+                                <tree>
+                                    <field name="hour_start"/>
+                                    <field name="hour_end"/>
+                                    <field name="reserve_time"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="hour_start" widget="float_time"/>
+                                            <field name="hour_end" widget="float_time"/>
+                                        </group>
+                                        <group>
+                                            <field name="reserve_time" widget="float_time"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </page>
+                    <page name="recursos" string="Recursos">
+                        <group>
+                            <field name="resource_ids" nolabel="1" options="{'no_create': True}">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+                <footer>
+                    <button name="action_generate_schedule" string="Generar" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="rc_generate_schedule_action" model="ir.actions.act_window">
+        <field name="name">Generar agenda</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rc.generate.schedule</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rc_resource_form_view" model="ir.ui.view">
+            <field name="name">rc.resource.form</field>
+            <field name="model">rc.resource</field>
+            <field name="arch" type="xml">
+                <form string="Recurso">
+                    <header>
+                        <button string="Activar" name="action_active" attrs="{'invisible': [('state', '=', 'active')]}"
+                                type="object" class="oe_highlight" groups="rc_uy_base.rc_admin_user_group"/>
+                        <button string="Inactivar" name="action_inactive" type="object"
+                                attrs="{'invisible': [('state', '!=', 'active')]}"
+                                groups="rc_uy_base.rc_admin_user_group"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archivado" bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}"/>
+                        <group>
+                            <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="email" widget="email" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group string="Consumidores">
+                            <field name="consumer_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="ci" optional="show"/>
+                                    <field name="email" widget="email" optional="show"/>
+                                    <field name="mobile" widget="phone" optional="show"/>
+                                    <field name="mobile_emergency" widget="phone" optional="show"/>
+                                    <field name="booked_qty" optional="hide"/>
+                                    <field name="available_booked_qty" optional="hide" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="rc_resource_tree_view" model="ir.ui.view">
+            <field name="name">rc.resource.tree</field>
+            <field name="model">rc.resource</field>
+            <field name="arch" type="xml">
+                <tree string="Recursos" decoration-danger="state == 'draft'" decoration-warning="state == 'inactive'">
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rc_resource_search_view" model="ir.ui.view">
+            <field name="name">rc.resource.search</field>
+            <field name="model">rc.resource</field>
+            <field name="arch" type="xml">
+                <search string="Recurso">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <filter string="Archivados" name="inactive" domain="[('active','=',False)]"/>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Estados" name="groupby_state" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_rc_resource" model="ir.actions.act_window">
+            <field name="name">Recursos</field>
+            <field name="res_model">rc.resource</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="rc_resource_tree_view"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Reservar cita" id="menu_rc_reservar_cita" sequence="1"
+                  groups="rc_admin_user_group,rc_consumer_user_group,rc_resource_user_group"/>
+
+        <menuitem name="Agendas" id="menu_rc_schedule" action="action_rc_schedule" parent="menu_rc_reservar_cita"
+                  sequence="10" groups="rc_admin_user_group,rc_resource_user_group"/>
+        <menuitem name="Agendar turno" id="menu_rc_reserva" action="action_rc_reserva" parent="menu_rc_reservar_cita"
+                  sequence="12" groups="rc_admin_user_group,rc_consumer_user_group"/>
+        <menuitem name="Generar agenda" id="menu_rc_generate_schedule" action="rc_generate_schedule_action"
+                  parent="menu_rc_reservar_cita" sequence="14" groups="rc_admin_user_group"/>
+        <menuitem name="Exámenes" id="menu_rc_consumer_test_drive" action="action_rc_consumer_test_drive"
+                  parent="menu_rc_reservar_cita" sequence="16" groups="rc_admin_user_group"/>
+
+        <menuitem name="Configuraciones" id="menu_rc_config" parent="menu_rc_reservar_cita" sequence="50"
+                  groups="rc_admin_user_group"/>
+        <menuitem name="Consumidores" id="menu_rc_consumer" action="action_rc_consumer" parent="menu_rc_config"
+                  sequence="10" groups="rc_admin_user_group"/>
+        <menuitem name="Recursos" id="menu_rc_resource" action="action_rc_resource" parent="menu_rc_config"
+                  sequence="12" groups="rc_admin_user_group"/>
+        <menuitem name="Configuraciones del sistema" id="menu_rc_params_config" action="action_rc_params_config"
+                  parent="menu_rc_config" sequence="30" groups="rc_admin_user_group"/>
+
+    </data>
+
+</odoo>

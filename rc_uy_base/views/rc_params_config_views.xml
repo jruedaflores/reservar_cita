@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rc_params_config_form_view" model="ir.ui.view">
+            <field name="name">rc.params.config.form</field>
+            <field name="model">rc.params.config</field>
+            <field name="arch" type="xml">
+                <form string="Configuraciones del sistema" create="0" delete="0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="value"/>
+                                <field name="key" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="rc_params_config_tree_view" model="ir.ui.view">
+            <field name="name">rc.params.config.tree</field>
+            <field name="model">rc.params.config</field>
+            <field name="arch" type="xml">
+                <tree string="Configuraciones del sistema" create="0" delete="0">
+                    <field name="key" invisible="1"/>
+                    <field name="name"/>
+                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rc_params_config_search_view" model="ir.ui.view">
+            <field name="name">rc.params.config.search</field>
+            <field name="model">rc.params.config</field>
+            <field name="arch" type="xml">
+                <search string="Configuraciones del sistema">
+                    <field name="name"/>
+                    <field name="value"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_rc_params_config" model="ir.actions.act_window">
+            <field name="name">Configuraciones del sistema</field>
+            <field name="res_model">rc.params.config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="rc_params_config_tree_view"/>
+        </record>
+
+    </data>
+</odoo>

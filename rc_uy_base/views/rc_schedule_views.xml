@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rc_schedule_form_view" model="ir.ui.view">
+            <field name="name">rc.schedule.form</field>
+            <field name="model">rc.schedule</field>
+            <field name="arch" type="xml">
+                <form string="Agenda">
+                    <header>
+                        <button string="Publicar" name="action_available" type="object" icon="fa-cloud-upload"
+                                attrs="{'invisible': [('state', 'in', ['available', 'booked'])]}" class="oe_highlight"
+                                groups="rc_uy_base.rc_admin_user_group"/>
+                        <button string="Bloquear" name="action_locked" type="object" icon="fa-cloud-download"
+                                attrs="{'invisible': [('state', 'in', ['locked', 'booked'])]}"
+                                groups="rc_uy_base.rc_admin_user_group"/>
+                        <button string="Reservar" name="%(action_form_rc_reserva)d" icon="fa-calendar-check-o"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'booked'])]}" type="action"
+                                context="{'default_resource_id': resource_id, 'default_schedule_id': id}"
+                                groups="rc_uy_base.rc_admin_user_group"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="date_start" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="date_stop" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="resource_id" attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="booking_name" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="rc_schedule_tree_view" model="ir.ui.view">
+            <field name="name">rc.schedule.tree</field>
+            <field name="model">rc.schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Agendas" decoration-danger="state == 'draft'" decoration-success="state == 'available'"
+                      decoration-warning="state == 'locked'" decoration-info="state == 'booked'">
+                    <field name="resource_id"/>
+                    <field name="date_start"/>
+                    <field name="date_stop" optional="show"/>
+                    <field name="state"/>
+                    <field name="booking_name" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rc_schedule_search_view" model="ir.ui.view">
+            <field name="name">rc.schedule.search</field>
+            <field name="model">rc.schedule</field>
+            <field name="arch" type="xml">
+                <search string="Agenda">
+                    <field name="date_start"/>
+                    <field name="resource_id"/>
+                    <field name="state"/>
+                    <separator/>
+                    <filter name="1_week_next" string="Próximos 7 días" domain="[
+                    ('date_start', '&gt;', (context_today()).strftime('%Y-%m-%d')),
+                    ('date_start', '&lt;=', (context_today() + relativedelta(weeks=1)).strftime('%Y-%m-%d'))]"/>
+                    <filter name="1_week_next" string="Próximos 14 días" domain="[
+                    ('date_start', '&gt;=', (context_today()).strftime('%Y-%m-%d')),
+                    ('date_start', '&lt;=', (context_today() + relativedelta(weeks=2)).strftime('%Y-%m-%d'))]"/>
+                    <filter name="1_week_next" string="Próximos 21 días" domain="[
+                    ('date_start', '&gt;', (context_today()).strftime('%Y-%m-%d')),
+                    ('date_start', '&lt;=', (context_today() + relativedelta(weeks=3)).strftime('%Y-%m-%d'))]"/>
+                    <filter name="1_week_next" string="Próximos 28 días" domain="[
+                    ('date_start', '&gt;', (context_today()).strftime('%Y-%m-%d')),
+                    ('date_start', '&lt;=', (context_today() + relativedelta(weeks=4)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Horario Comienzo" name="date_start_filter" date="date_start"
+                            default_period="last_30_days"/>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Recursos" name="groupby_resource_id" context="{'group_by': 'resource_id'}"/>
+                        <filter string="Estado" name="groupby_state" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="rc_schedule_calendar_view">
+            <field name="name">rc.schedule.calendar</field>
+            <field name="model">rc.schedule</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Vista Calendario" date_start="date_start" date_stop="date_stop" color="state"
+                          quick_add="false" event_open_popup="True">
+                    <field name="resource_id" avatar_field="image_128"/>
+                    <field name="booking_name"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="rc_schedule_pivot_view" model="ir.ui.view">
+            <field name="name">rc.schedule.pivot</field>
+            <field name="model">rc.schedule</field>
+            <field name="arch" type="xml">
+                <pivot string="Vista Reporte" disable_linking="True">
+                    <field name="date_start" interval="day" type="row"/>
+                    <field name="state" type="col"/>
+                    <field name="resource_id" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="rc_schedule_graph_view" model="ir.ui.view">
+            <field name="name">rc.schedule.graph</field>
+            <field name="model">rc.schedule</field>
+            <field name="arch" type="xml">
+                <graph string="Vista Reporte" stacked="False">
+                    <field name="resource_id" type="row"/>
+                    <field name="state" type="col"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="action_rc_schedule" model="ir.actions.act_window">
+            <field name="name">Agendas</field>
+            <field name="res_model">rc.schedule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">calendar,tree,form,pivot,graph</field>
+            <field name="view_id" ref="rc_schedule_calendar_view"/>
+            <field name="context">{'calendar_views': True}</field>
+        </record>
+
+        <record id="action_tree_rc_schedule_action_available" model="ir.actions.server">
+            <field name="name">Publicar</field>
+            <field name="model_id" ref="rc_uy_base.model_rc_schedule"/>
+            <field name="binding_model_id" ref="rc_uy_base.model_rc_schedule"/>
+            <field name="state">code</field>
+            <field name="groups_id" eval="[(4, ref('rc_uy_base.rc_admin_user_group'))]"/>
+            <field name="code">
+                if records:
+                action = records.action_available()
+            </field>
+        </record>
+
+        <record id="action_tree_rc_schedule_action_locked" model="ir.actions.server">
+            <field name="name">Bloquear</field>
+            <field name="model_id" ref="rc_uy_base.model_rc_schedule"/>
+            <field name="binding_model_id" ref="rc_uy_base.model_rc_schedule"/>
+            <field name="state">code</field>
+            <field name="groups_id" eval="[(4, ref('rc_uy_base.rc_admin_user_group'))]"/>
+            <field name="code">
+                if records:
+                action = records.action_locked()
+            </field>
+        </record>
+
+    </data>
+</odoo>
