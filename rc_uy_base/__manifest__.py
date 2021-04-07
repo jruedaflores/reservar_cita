@@ -30,6 +30,7 @@
         'data/rc_params_config_data.xml',
         'views/rc_params_config_views.xml',
         'views/rc_resource_views.xml',
+        'views/rc_human_resource_views.xml',
         'views/rc_consumer_views.xml',
         'views/rc_consumer_test_drive_views.xml',
         'views/rc_booking_views.xml',

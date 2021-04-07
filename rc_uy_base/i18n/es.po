@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20200606\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 01:52+0000\n"
-"PO-Revision-Date: 2021-03-26 01:52+0000\n"
+"POT-Creation-Date: 2021-04-07 02:37+0000\n"
+"PO-Revision-Date: 2021-04-07 02:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,7 @@ msgstr "Clases"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_needaction
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_needaction
@@ -47,14 +48,17 @@ msgstr "Acción requerida"
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Activar"
 msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__active
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__active
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__active
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer__state__active
+#: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_human_resource__state__active
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_resource__state__active
 msgid "Activo"
 msgstr ""
@@ -107,6 +111,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_search_view
@@ -121,12 +126,14 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Archivado"
 msgstr ""
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 msgid "Archivados"
 msgstr ""
@@ -135,6 +142,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_attachment_count
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_attachment_count
@@ -167,6 +175,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_booking__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer_test_drive__state__draft
+#: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_human_resource__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_resource__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_schedule__state__draft
 msgid "Borrador"
@@ -278,6 +287,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__create_uid
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__create_uid
@@ -291,6 +301,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__create_date
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__create_date
@@ -330,6 +341,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__display_name
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__display_name
@@ -363,7 +375,7 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__email
-#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__email
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__email
 msgid "Email"
 msgstr ""
 
@@ -375,8 +387,8 @@ msgid "Email (usuario) de conexión al sistema."
 msgstr ""
 
 #. module: rc_uy_base
-#: code:addons/rc_uy_base/models/rc_resource.py:0
-#: model:ir.model.fields,help:rc_uy_base.field_rc_resource__email
+#: code:addons/rc_uy_base/models/rc_human_resource.py:0
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__email
 #, python-format
 msgid "Email utilizado para el usuario conectarse al sistema."
 msgstr ""
@@ -406,6 +418,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__state
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__state
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_search_view
@@ -415,6 +428,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 msgid "Estados"
@@ -434,6 +448,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_follower_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_follower_ids
@@ -444,6 +459,7 @@ msgstr "Seguidores"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_channel_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_channel_ids
@@ -454,6 +470,7 @@ msgstr "Seguidores (Canales)"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_partner_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_partner_ids
@@ -521,6 +538,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__id
@@ -534,6 +552,8 @@ msgstr ""
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_unread
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_needaction
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_unread
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_needaction
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_unread
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_needaction
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_unread
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_needaction
@@ -545,22 +565,32 @@ msgstr "Si está marcado hay nuevos mensajes que requieren su atención."
 
 #. module: rc_uy_base
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_has_sms_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Inactivar"
 msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer__state__inactive
+#: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_human_resource__state__inactive
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_resource__state__inactive
 msgid "Inactivo"
 msgstr ""
@@ -569,6 +599,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_is_follower
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_is_follower
@@ -596,6 +627,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour____last_update
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule____last_update
@@ -609,6 +641,7 @@ msgstr "Última modificación en"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__write_uid
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__write_uid
@@ -622,6 +655,7 @@ msgstr "Última actualización por"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__write_date
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__write_date
@@ -637,6 +671,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_main_attachment_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_main_attachment_id
@@ -644,9 +679,15 @@ msgid "Main Attachment"
 msgstr "Adjuntos principales"
 
 #. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__matricula
+msgid "Matrícula"
+msgstr ""
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_has_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_has_error
@@ -657,6 +698,7 @@ msgstr "Error de Envío de Mensaje"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_ids
@@ -700,6 +742,7 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__name
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__name
 msgid "Nombre"
@@ -715,6 +758,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_needaction_counter
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_needaction_counter
@@ -725,6 +769,7 @@ msgstr "Número de acciones"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_has_error_counter
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_has_error_counter
@@ -735,6 +780,7 @@ msgstr "Numero de errores"
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_needaction_counter
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_needaction_counter
@@ -745,6 +791,7 @@ msgstr "Número de mensajes que requieren una acción"
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_has_error_counter
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_has_error_counter
@@ -755,6 +802,7 @@ msgstr "Número de mensajes con error de envío"
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_unread_counter
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_unread_counter
@@ -853,11 +901,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__resource_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__resource_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__resource_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__resource_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__resource_id
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 msgid "Recurso"
 msgstr "Vehículo"
+
+#. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_res_users__rc_human_resource_id
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
+msgid "Recurso persona"
+msgstr "Instructor"
 
 #. module: rc_uy_base
 #: model:ir.actions.act_window,name:rc_uy_base.action_rc_resource
@@ -870,6 +926,18 @@ msgstr "Vehículo"
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_search_view
 msgid "Recursos"
 msgstr "Vehículos"
+
+#. module: rc_uy_base
+#: model:ir.actions.act_window,name:rc_uy_base.action_rc_human_resource
+#: model:ir.ui.menu,name:rc_uy_base.menu_rc_human_resource
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_tree_view
+msgid "Recursos personas"
+msgstr "Instructores"
+
+#. module: rc_uy_base
+#: model:ir.model,name:rc_uy_base.model_rc_human_resource
+msgid "Repesenta el Recurso Humano que es reservado por la persona."
+msgstr "Repesenta al Instructor"
 
 #. module: rc_uy_base
 #: model:ir.model,name:rc_uy_base.model_rc_resource
@@ -978,8 +1046,20 @@ msgid "Resource user"
 msgstr "Conductor Vehículo"
 
 #. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: rc_uy_base
 #: code:addons/rc_uy_base/utils/expression.py:0
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__active
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__active
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__active
 #, python-format
 msgid ""
@@ -1027,6 +1107,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_unread
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_unread
@@ -1037,6 +1118,7 @@ msgstr "Mensajes sin leer"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_unread_counter
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_unread_counter
@@ -1044,8 +1126,13 @@ msgid "Unread Messages Counter"
 msgstr "Contador de mensajes sin leer"
 
 #. module: rc_uy_base
+#: model:ir.model,name:rc_uy_base.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__users_id
-#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__users_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__users_id
 msgid "Usuario"
 msgstr ""
 
@@ -1089,6 +1176,7 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_consumer_name_uniq
+#: model:ir.model.constraint,message:rc_uy_base.constraint_rc_human_resource_name_uniq
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_params_config_name_uniq
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_resource_name_uniq
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_schedule_name_uniq

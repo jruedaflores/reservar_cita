@@ -20,6 +20,8 @@
                   sequence="10" groups="rc_admin_user_group"/>
         <menuitem name="Recursos" id="menu_rc_resource" action="action_rc_resource" parent="menu_rc_config"
                   sequence="12" groups="rc_admin_user_group"/>
+        <menuitem name="Recursos personas" id="menu_rc_human_resource" action="action_rc_human_resource" parent="menu_rc_config"
+                  sequence="14" groups="rc_admin_user_group"/>
         <menuitem name="Configuraciones del sistema" id="menu_rc_params_config" action="action_rc_params_config"
                   parent="menu_rc_config" sequence="30" groups="rc_admin_user_group"/>
 
