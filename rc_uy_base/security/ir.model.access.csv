@@ -4,6 +4,9 @@ access_rc_params_config_consumer_user,rc.params.config.consumer.user,model_rc_pa
 access_rc_resource_admin_user,rc.resource.admin.user,model_rc_resource,rc_admin_user_group,1,1,1,1
 access_rc_resource_consumer_user,rc.resource.consumer.user,model_rc_resource,rc_consumer_user_group,1,0,0,0
 access_rc_resource_resource_user,rc.resource.resource.user,model_rc_resource,rc_resource_user_group,1,0,0,0
+access_rc_human_resource_admin_user,rc.human.resource.admin.user,model_rc_human_resource,rc_admin_user_group,1,1,1,1
+access_rc_human_resource_consumer_user,rc.human.resource.consumer.user,model_rc_human_resource,rc_consumer_user_group,1,0,0,0
+access_rc_human_resource_resource_user,rc.human.resource.resource.user,model_rc_human_resource,rc_resource_user_group,1,0,0,0
 access_rc_consumer_admin_user,rc.consumer.admin.user,model_rc_consumer,rc_admin_user_group,1,1,1,1
 access_rc_consumer_consumer_user,rc.consumer.consumer.user,model_rc_consumer,rc_consumer_user_group,1,0,0,0
 access_rc_consumer_resource_user,rc.consumer.resource.user,model_rc_consumer,rc_resource_user_group,1,0,0,0
@@ -14,5 +17,3 @@ access_rc_schedule_resource_user,rc.schedule.resource.user,model_rc_schedule,rc_
 access_rc_booking_admin_user,rc.booking.admin.user,model_rc_booking,rc_admin_user_group,1,1,1,1
 access_rc_booking_consumer_user,rc.booking.consumer.user,model_rc_booking,rc_consumer_user_group,1,1,1,1
 access_rc_booking_resource_user,rc.booking.resource.user,model_rc_booking,rc_resource_user_group,1,0,0,0
-
-

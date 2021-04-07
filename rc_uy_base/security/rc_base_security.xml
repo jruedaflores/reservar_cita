@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
-
-        <!--<record id="base.default_user" model="res.users">
-            <field name="groups_id" eval="[(3,ref('stock.group_stock_manager')),(3,ref('stock.group_stock_user'))]"/>
-        </record>-->
+    <data >
 
         <record id="rc_uy_base.module_category_rc_booking" model="ir.module.category">
             <field name="name">Reserva de citas</field>
@@ -39,10 +35,11 @@
             <field name="groups" eval="[(4,ref('rc_consumer_user_group'))]"/>
         </record>
 
-        <record id="rc_resource_user_rule" model="ir.rule">
+        <record id="rc_human_resource_user_rule" model="ir.rule">
             <field name="name">Recurso - Accede solamente la agenda propias</field>
             <field name="model_id" ref="rc_uy_base.model_rc_schedule"/>
-            <field name="domain_force">['|', ('resource_id.users_id', '=', user.id), ('create_uid', '=', user.id)]
+            <field name="domain_force">['|', ('resource_id', '=', user.rc_human_resource_id.resource_id.id), ('create_uid', '=', user.id)]
+<!--            <field name="domain_force">['|', ('resource_id', 'in', user.rc_human_resource_id.resource_ids.ids), ('create_uid', '=', user.id)]-->
             </field>
             <field name="perm_read" eval="1"/>
             <field name="perm_write" eval="1"/>
