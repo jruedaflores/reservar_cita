@@ -11,6 +11,7 @@
     'depends': [
         'rc_uy_update',
         'rc_uy_base',
+        'web_responsive',
     ],
     'data': [
     ],

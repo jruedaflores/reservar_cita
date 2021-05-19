@@ -29,7 +29,8 @@ class RcHumanResource(models.Model):
             "name": self.name,
             "login": self.email,
             "password": self.email.split("@")[0],
-            "rc_human_resource_id": self.id
+            "rc_human_resource_id": self.id,
+            "action_id": self.env.ref('rc_uy_base.action_rc_schedule').id
         }
         return self.env["res.users"].create(user_values)
 
