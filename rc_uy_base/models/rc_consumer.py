@@ -43,7 +43,8 @@ class RcConsumer(models.Model):
         user_values = {
             "name": self.name,
             "login": self.email,
-            "password": self.email.split("@")[0]
+            "password": self.email.split("@")[0],
+            "action_id": self.env.ref('rc_uy_base.action_rc_reserva').id
         }
         return self.env["res.users"].create(user_values)
 
