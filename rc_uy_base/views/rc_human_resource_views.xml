@@ -24,7 +24,11 @@
                                 <field name="resource_id" options="{'no_create': True, 'no_open': True}"/>
                             </group>
                             <group>
-                                <field name="email" widget="email" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="email" widget="email"
+                                       attrs="{'readonly': [('state', '!=', 'draft')],
+                                                'invisible': [('state', '!=', 'draft')]}"/>
+                                <field name="users_id_login" widget="email"
+                                       attrs="{'invisible': [('state', '=', 'draft')]}"/>
                                 <field name="active" invisible="1"/>
                             </group>
                         </group>

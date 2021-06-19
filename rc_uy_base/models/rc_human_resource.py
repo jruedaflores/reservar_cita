@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+import re
 
 from ..utils.expression import ACTIVE_USER_ERROR_MSG, UNLINK_USER_ERROR_MSG
 
@@ -15,6 +16,8 @@ class RcHumanResource(models.Model):
                              string='Estado', default="draft", readonly=True, tracking=True)
     email = fields.Char('Email', required=True, help=_("Email utilizado para el usuario conectarse al sistema."))
     users_id = fields.Many2one('res.users', 'Usuario', readonly=1)
+    users_id_login = fields.Char('Email', related='users_id.login',
+                                 help=_("Email utilizado para el usuario conectarse al sistema."))
     resource_id = fields.Many2one('rc.resource', 'Recurso')
     # resource_ids = fields.Many2many('rc.resource', 'rc_human_resource_resource_rel', 'human_id', 'resource_id',
     #                                 string='Recursos')
@@ -57,6 +60,14 @@ class RcHumanResource(models.Model):
             if self.users_id:
                 self.users_id.active = False
         return super(RcHumanResource, self).unlink()
+
+    @api.onchange('email')
+    def onchange_email(self):
+        if self.email:
+            self.email = self.email.lower()
+            match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.email)
+            if match is None:
+                raise ValidationError('Error, no es un correo electrónico válido.')
 
 
 class ResUsers(models.Model):
