@@ -59,15 +59,15 @@ class RcBooking(models.Model):
         if self.state != 'draft':
             raise UserError(_("Para realizar dicha operación las Reservas deben estar en estado Borrador."))
 
-        now = datetime.datetime.utcnow()
-        if now >= self.date_start:
-            raise UserError(_("La fecha seleccionada no está disponible. Debe seleccionar un turno posterior a la "
-                              "fecha – hora actual."))
-
         if not self._context.get('active_model', False) and self.schedule_id.state != 'available':
             raise UserError(_("La fecha seleccionada no está disponible en estos momentos."))
 
         if not self._is_admin_user_group():
+            now = datetime.datetime.utcnow()
+            if now >= self.date_start:
+                raise UserError(_("La fecha seleccionada no está disponible. Debe seleccionar un turno posterior a la "
+                                  "fecha – hora actual."))
+
             week = self.date_start.isocalendar()[1]
             weekly_booking_ids = self.consumer_id.booking_ids.filtered(
                 lambda reg: reg.state in ('confirmed', 'absent', 'done') and reg.date_start.isocalendar()[1] == week)
