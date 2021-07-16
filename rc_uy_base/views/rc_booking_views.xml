@@ -32,7 +32,7 @@
                     </header>
                     <sheet>
                         <div class="alert alert-warning d-inline-block" role="alert"
-                                 attrs="{'invisible': [('state', '=', 'draft'), ('schedule_id', '=', False)]}">
+                                 attrs="{'invisible': ['|',('state', '!=', 'draft'), '&amp;', ('state', '=', 'draft'), ('id', '=', False), ]}">
                             <p>La reserva se encuentra aún en estado <strong>Borrador</strong>. Para agendar la clase, debe dar clic en <strong>Reservar</strong>.</p>
                         </div>
                         <group>
