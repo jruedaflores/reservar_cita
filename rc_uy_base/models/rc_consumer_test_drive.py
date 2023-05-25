@@ -26,12 +26,15 @@ class RcConsumerTestDrive(models.Model):
     resource_id = fields.Many2one('rc.resource', 'Recurso', related='consumer_id.resource_id')
     booking_id = fields.Many2one('rc.booking', 'Reserva', readonly=True)
 
-    _sql_constraints = [
-        ('name_uniq', 'unique (consumer_id,date)', """¡El valor ya existe!"""),
-    ]
+    # _sql_constraints = [
+    #     ('name_uniq', 'unique (consumer_id,date)', """¡El valor ya existe!"""),
+    # ]
 
     def action_planned(self):
         self.state = 'planned'
+
+    def action_automatic_scheduled(self):
+        self.state = 'scheduled'
 
     def action_scheduled(self):
         if self.consumer_id.resource_id:
@@ -43,14 +46,22 @@ class RcConsumerTestDrive(models.Model):
             }
             if can_create_schedule(schedule_ids, schedule_values):
                 schedule_values_id = self.env['rc.schedule'].create(schedule_values)
-                schedule_values_id.action_available()
+            else:
+                schedule_search = [('date_start', '=', self.date_start), ('date_stop', '=', self.date_stop),
+                                   ('resource_id', '=', self.consumer_id.resource_id.id), ('state', '!=', 'booked')]
+                schedule_values_id = self.env['rc.schedule'].search(schedule_search, limit=1)
+
+            if schedule_values_id:
+                if schedule_values_id.state in ('draft', 'locked'):
+                    schedule_values_id.action_available()
+
                 booking_values = {
                     'schedule_id': schedule_values_id.id,
                     'consumer_id': self.consumer_id.id,
                     'resource_id': schedule_values.get('resource_id'),
                 }
                 booking_id = self.env['rc.booking'].create(booking_values)
-                booking_id.action_confirmed()
+                booking_id.action_automatic_confirmed()
                 self.booking_id = booking_id.id
                 self.state = 'scheduled'
             else:
@@ -59,10 +70,17 @@ class RcConsumerTestDrive(models.Model):
             raise UserError(_("No es posible realizar la operación. Datos incompletos."))
 
     def action_approved(self):
+        if self.booking_id.state == 'confirmed':
+            self.booking_id.action_done()
         self.state = 'approved'
 
     def action_suspended(self):
+        if self.booking_id.state == 'confirmed':
+            self.booking_id.action_done()
         self.state = 'suspended'
+
+    def action_automatic_canceled(self):
+        self.state = 'canceled'
 
     def action_canceled(self):
         if self.booking_id.state == 'confirmed':

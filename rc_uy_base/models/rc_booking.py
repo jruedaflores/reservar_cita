@@ -39,10 +39,11 @@ class RcBooking(models.Model):
     date_stop = fields.Datetime(related='schedule_id.date_stop', store=False)
     is_cancellable = fields.Boolean('Es cancelable', compute='_compute_boolean_fields')
     is_admin_user = fields.Boolean('Es usuario admin', compute='_compute_boolean_fields', default=_default_admin_user)
+    has_test_drive = fields.Boolean('Tiene exámenes activos?', default=False)
 
-    _sql_constraints = [
-        ('name_uniq', 'unique (consumer_id,schedule_id,state)', """¡El valor ya existe!"""),
-    ]
+    # _sql_constraints = [
+    #     ('name_uniq', 'unique (consumer_id,schedule_id,state)', """¡El valor ya existe!"""),
+    # ]
 
     def unlink(self):
         for item in self:
@@ -50,19 +51,23 @@ class RcBooking(models.Model):
                 raise UserError(UNLINK_USER_ERROR_MSG)
         return super(RcBooking, self).unlink()
 
+    def action_automatic_confirmed(self):
+        self.action_confirmed()
+        self.has_test_drive = True
+
     def action_confirmed(self):
         if self.state != 'draft':
             raise UserError(_("Para realizar dicha operación las Reservas deben estar en estado Borrador."))
-
-        now = datetime.datetime.utcnow()
-        if now >= self.date_start:
-            raise UserError(_("La fecha seleccionada no está disponible. Debe seleccionar un turno posterior a la "
-                              "fecha – hora actual."))
 
         if not self._context.get('active_model', False) and self.schedule_id.state != 'available':
             raise UserError(_("La fecha seleccionada no está disponible en estos momentos."))
 
         if not self._is_admin_user_group():
+            now = datetime.datetime.utcnow()
+            if now >= self.date_start:
+                raise UserError(_("La fecha seleccionada no está disponible. Debe seleccionar un turno posterior a la "
+                                  "fecha – hora actual."))
+
             week = self.date_start.isocalendar()[1]
             weekly_booking_ids = self.consumer_id.booking_ids.filtered(
                 lambda reg: reg.state in ('confirmed', 'absent', 'done') and reg.date_start.isocalendar()[1] == week)
@@ -92,6 +97,10 @@ class RcBooking(models.Model):
     def _common_action_canceled(self):
         self.sudo().schedule_id.state = 'available'
         self.state = 'canceled'
+        if self.has_test_drive:
+            test_drive_ids = self.env['rc.consumer.test.drive'].search([('booking_id', '=', self.id)])
+            for test_id in test_drive_ids:
+                test_id.action_automatic_canceled()
 
     def _common_compute_is_cancellable(self):
         is_cancellable = False
@@ -113,6 +122,21 @@ class RcBooking(models.Model):
             if rec.state != 'confirmed':
                 raise UserError(_("Para realizar dicha operación las Reservas deben estar en estado Confirmada."))
             rec._common_action_canceled()
+
+    def action_create_test_drive(self):
+        for rec in self:
+            if rec.state == 'confirmed':
+                test_values = {
+                    'consumer_id': self.consumer_id.id,
+                    'type': 'practical',
+                    'resource_id': self.resource_id.id,
+                    'booking_id': self.id,
+                    'date_start': self.date_start,
+                    'date_stop': self.date_stop,
+                }
+                test_drive_id = self.env['rc.consumer.test.drive'].create(test_values)
+                test_drive_id.action_automatic_scheduled()
+                self.has_test_drive = True
 
     @api.onchange('consumer_id')
     def onchange_consumer_id(self):

@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+import re
 
 from ..utils.expression import ACTIVE_USER_ERROR_MSG, UNLINK_USER_ERROR_MSG
 from ..utils.common import convert_hour_to_minute, calculate_time_in_minutes
@@ -24,6 +25,8 @@ class RcConsumer(models.Model):
                              string='Estado', default="draft", readonly=True, tracking=True)
     resource_id = fields.Many2one('rc.resource', 'Recurso', domain="[('state','=', 'active')]", tracking=True)
     users_id = fields.Many2one('res.users', 'Usuario', readonly=1)
+    users_id_login = fields.Char('Email', related='users_id.login',
+                                 help=_("Email (usuario) de conexión al sistema."))
     booking_ids = fields.One2many('rc.booking', 'consumer_id', string=' Reservas')
     booking_qty = fields.Integer(string='Totales contratadas', help="Cantidad total de reservas.", tracking=True)
     booked_qty = fields.Float(string='Confirmadas', compute='_compute_booking_qty',
@@ -43,7 +46,8 @@ class RcConsumer(models.Model):
         user_values = {
             "name": self.name,
             "login": self.email,
-            "password": self.email.split("@")[0]
+            "password": self.email.split("@")[0],
+            "action_id": self.env.ref('rc_uy_base.action_rc_reserva').id
         }
         return self.env["res.users"].create(user_values)
 
@@ -84,3 +88,11 @@ class RcConsumer(models.Model):
                     qty += (booking_time_minutes / config_booking_time_minutes)
             consumer.booked_qty = qty
             consumer.available_booked_qty = consumer.booking_qty - qty
+
+    @api.onchange('email')
+    def onchange_email(self):
+        if self.email:
+            self.email = self.email.lower()
+            match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.email)
+            if match is None:
+                raise ValidationError('Error, no es un correo electrónico válido.')

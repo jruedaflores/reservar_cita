@@ -20,7 +20,7 @@
                                 attrs="{'invisible': [('active', '=', True)]}"/>
                         <group>
                             <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-                            <field name="email" widget="email" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="matricula" />
                             <field name="active" invisible="1"/>
                         </group>
                         <group string="Consumidores">

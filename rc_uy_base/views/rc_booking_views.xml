@@ -25,17 +25,24 @@
                                 attrs="{'invisible': ['|',('state', '!=', 'confirmed'),('is_cancellable', '=', True)]}"
                                 confirm="¿Confirma la cancelación de la reservación realizada?"
                                 groups="rc_uy_base.rc_admin_user_group"/>
+                        <button string="Agendar Examen" name="action_create_test_drive" type="object"
+                                attrs="{'invisible': ['|',('state', '!=', 'confirmed'),('has_test_drive', '=', True)]}"
+                                icon="fa-calendar-check-o" groups="rc_uy_base.rc_admin_user_group"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
                     </header>
                     <sheet>
+                        <div class="alert alert-warning d-inline-block" role="alert"
+                                 attrs="{'invisible': ['|',('state', '!=', 'draft'), '&amp;', ('state', '=', 'draft'), ('id', '=', False), ]}">
+                            <p>La reserva se encuentra aún en estado <strong>Borrador</strong>. Para agendar la clase, debe dar clic en <strong>Reservar</strong>.</p>
+                        </div>
                         <group>
                             <group>
                                 <field name="consumer_id" options="{'no_create': True, 'no_open': True}"
                                        attrs="{'readonly': ['|',('state', '!=', 'draft'),
-                                       ('is_admin_user', '!=', True)]}"
-                                />
+                                       ('is_admin_user', '!=', True)]}" />
                                 <field name="resource_id" options="{'no_create': True, 'no_open': True}"
-                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                       attrs="{'readonly': ['|',('state', '!=', 'draft'),
+                                       ('is_admin_user', '!=', True)]}" force_save="1"/>
                             </group>
                             <group>
                                 <field name="schedule_id" options="{'no_create': True}"
@@ -45,7 +52,7 @@
                                 <field name="date_stop" attrs="{'invisible': [('state', '=', 'draft')]}"/>
                                 <field name="is_cancellable" invisible="1"/>
                                 <field name="is_admin_user" invisible="1"/>
-
+                                <field name="has_test_drive" invisible="1"/>
                             </group>
                         </group>
                     </sheet>
@@ -94,7 +101,7 @@
                     <field name="schedule_id" optional="show"/>
                     <field name="date_start" optional="hide"/>
                     <field name="date_stop" optional="hide"/>
-                    <field name="consumer_id"/>
+                    <field name="consumer_id" optional="show"/>
                     <field name="state"/>
                     <field name="resource_id" optional="show"/>
                 </tree>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0-20200606\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 14:41+0000\n"
-"PO-Revision-Date: 2020-12-29 14:41+0000\n"
+"POT-Creation-Date: 2021-04-07 02:37+0000\n"
+"PO-Revision-Date: 2021-04-07 02:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,14 +26,20 @@ msgid " Exámenes"
 msgstr ""
 
 #. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__rc_generate_schedule_hour_ids
+msgid " Horarios"
+msgstr ""
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__booking_ids
 msgid " Reservas"
-msgstr ""
+msgstr "Clases"
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_needaction
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_needaction
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_needaction
@@ -42,14 +48,17 @@ msgstr "Acción requerida"
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Activar"
 msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__active
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__active
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__active
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer__state__active
+#: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_human_resource__state__active
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_resource__state__active
 msgid "Activo"
 msgstr ""
@@ -60,7 +69,11 @@ msgid "Administrar la reservación de citas."
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.actions.act_window,name:rc_uy_base.action_rc_schedule
+#: model:res.groups,name:rc_uy_base.rc_admin_user_group
+msgid "Administrator user"
+msgstr "Administrador"
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__schedule_id
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_form_view
@@ -79,11 +92,17 @@ msgid "Agendar"
 msgstr ""
 
 #. module: rc_uy_base
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_form_view
+msgid "Agendar Examen"
+msgstr ""
+
+#. module: rc_uy_base
 #: model:ir.ui.menu,name:rc_uy_base.menu_rc_reserva
 msgid "Agendar turno"
 msgstr "Agendar clases"
 
 #. module: rc_uy_base
+#: model:ir.actions.act_window,name:rc_uy_base.action_rc_schedule
 #: model:ir.ui.menu,name:rc_uy_base.menu_rc_schedule
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_tree_view
 msgid "Agendas"
@@ -92,6 +111,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_search_view
@@ -106,12 +126,14 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Archivado"
 msgstr ""
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 msgid "Archivados"
 msgstr ""
@@ -120,6 +142,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_attachment_count
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_attachment_count
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_attachment_count
@@ -143,6 +166,7 @@ msgid "Bloqueado"
 msgstr ""
 
 #. module: rc_uy_base
+#: model:ir.actions.server,name:rc_uy_base.action_tree_rc_schedule_action_locked
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_form_view
 msgid "Bloquear"
 msgstr ""
@@ -151,6 +175,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_booking__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer_test_drive__state__draft
+#: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_human_resource__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_resource__state__draft
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_schedule__state__draft
 msgid "Borrador"
@@ -181,13 +206,20 @@ msgid "Cantidad de reservas disponibles."
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__available_booked_qty
+#: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__weekly_booking_qty
 msgid "Cantidad máxima de reservas semanales permitidas."
 msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__booking_qty
 msgid "Cantidad total de reservas."
+msgstr ""
+
+#. module: rc_uy_base
+#: code:addons/rc_uy_base/models/rc_booking.py:0
+#, python-format
+msgid ""
+"Con la reserva, se supera el máximo de horas de reservaciones semanales."
 msgstr ""
 
 #. module: rc_uy_base
@@ -220,6 +252,11 @@ msgid "Confirmar"
 msgstr ""
 
 #. module: rc_uy_base
+#: model:res.groups,name:rc_uy_base.rc_consumer_user_group
+msgid "Consumer user"
+msgstr "Estudiante"
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__consumer_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__consumer_id
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
@@ -229,10 +266,12 @@ msgstr "Estudiante"
 
 #. module: rc_uy_base
 #: model:ir.actions.act_window,name:rc_uy_base.action_rc_consumer
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__consumer_ids
 #: model:ir.ui.menu,name:rc_uy_base.menu_rc_consumer
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_tree_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Consumidores"
 msgstr "Estudiantes"
 
@@ -247,6 +286,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__create_uid
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__create_uid
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__create_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__create_uid
@@ -259,6 +300,8 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__create_date
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__create_date
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__create_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__create_date
@@ -297,6 +340,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__display_name
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__display_name
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__display_name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__display_name
@@ -314,7 +359,7 @@ msgid "Disponibles"
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__reserve_time
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__reserve_time
 msgid "Duración"
 msgstr ""
 
@@ -330,6 +375,7 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__email
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__email
 msgid "Email"
 msgstr ""
 
@@ -341,10 +387,10 @@ msgid "Email (usuario) de conexión al sistema."
 msgstr ""
 
 #. module: rc_uy_base
-#: code:addons/rc_uy_base/models/rc_resource.py:0
-#: model:ir.model.fields,help:rc_uy_base.field_rc_resource__email
+#: code:addons/rc_uy_base/models/rc_human_resource.py:0
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__email
 #, python-format
-msgid "Email (usuario) de conexión al sistema."
+msgid "Email utilizado para el usuario conectarse al sistema."
 msgstr ""
 
 #. module: rc_uy_base
@@ -372,6 +418,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__state
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__state
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__state
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_search_view
@@ -381,6 +428,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 msgid "Estados"
@@ -389,6 +437,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model:ir.actions.act_window,name:rc_uy_base.action_rc_consumer_test_drive
 #: model:ir.ui.menu,name:rc_uy_base.menu_rc_consumer_test_drive
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_search_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_test_drive_tree_view
@@ -399,6 +448,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_follower_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_follower_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_follower_ids
@@ -409,6 +459,7 @@ msgstr "Seguidores"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_channel_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_channel_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_channel_ids
@@ -419,6 +470,7 @@ msgstr "Seguidores (Canales)"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_partner_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_partner_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_partner_ids
@@ -432,6 +484,7 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__rc_generate_schedule_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__rc_generate_schedule_id
 msgid "Generar Agenda"
 msgstr ""
 
@@ -448,18 +501,13 @@ msgid "Generar agendas"
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__hour_end
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__hour_end
 msgid "Hora Fin"
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__hour_start
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__hour_start
 msgid "Hora Inicio"
-msgstr ""
-
-#. module: rc_uy_base
-#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_generate_schedule_view_form
-msgid "Horario"
 msgstr ""
 
 #. module: rc_uy_base
@@ -472,9 +520,15 @@ msgid "Horario Comienzo"
 msgstr ""
 
 #. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__date_stop
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__date_stop
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__date_stop
 msgid "Horario Terminación"
+msgstr ""
+
+#. module: rc_uy_base
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_generate_schedule_view_form
+msgid "Horarios"
 msgstr ""
 
 #. module: rc_uy_base
@@ -483,6 +537,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__id
@@ -496,6 +552,8 @@ msgstr ""
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_unread
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_needaction
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_unread
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_needaction
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_unread
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_needaction
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_unread
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_needaction
@@ -507,22 +565,32 @@ msgstr "Si está marcado hay nuevos mensajes que requieren su atención."
 
 #. module: rc_uy_base
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_has_sms_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_has_sms_error
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_has_error
+#: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
 
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 msgid "Inactivar"
 msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_consumer__state__inactive
+#: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_human_resource__state__inactive
 #: model:ir.model.fields.selection,name:rc_uy_base.selection__rc_resource__state__inactive
 msgid "Inactivo"
 msgstr ""
@@ -531,6 +599,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_is_follower
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_is_follower
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_is_follower
@@ -541,12 +610,6 @@ msgstr "Es un seguidor"
 #: code:addons/rc_uy_base/models/rc_booking.py:0
 #, python-format
 msgid "La fecha seleccionada no está disponible en estos momentos."
-msgstr ""
-
-#. module: rc_uy_base
-#: code:addons/rc_uy_base/models/rc_booking.py:0
-#, python-format
-msgid "Con la reserva, se supera el máximo de horas de reservaciones semanales."
 msgstr ""
 
 #. module: rc_uy_base
@@ -563,6 +626,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day____last_update
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour____last_update
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource____last_update
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule____last_update
@@ -575,6 +640,8 @@ msgstr "Última modificación en"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__write_uid
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__write_uid
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__write_uid
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__write_uid
@@ -587,6 +654,8 @@ msgstr "Última actualización por"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_day__write_date
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_generate_schedule_hour__write_date
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__write_date
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__write_date
@@ -602,6 +671,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_main_attachment_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_main_attachment_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_main_attachment_id
@@ -609,9 +679,15 @@ msgid "Main Attachment"
 msgstr "Adjuntos principales"
 
 #. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__matricula
+msgid "Matrícula"
+msgstr ""
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_has_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_has_error
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_has_error
@@ -622,6 +698,7 @@ msgstr "Error de Envío de Mensaje"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_ids
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_ids
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_ids
@@ -665,6 +742,7 @@ msgstr ""
 
 #. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__name
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__name
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__name
 msgid "Nombre"
@@ -680,6 +758,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_needaction_counter
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_needaction_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_needaction_counter
@@ -690,6 +769,7 @@ msgstr "Número de acciones"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_has_error_counter
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_has_error_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_has_error_counter
@@ -700,6 +780,7 @@ msgstr "Numero de errores"
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_needaction_counter
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_needaction_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_needaction_counter
@@ -710,6 +791,7 @@ msgstr "Número de mensajes que requieren una acción"
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_has_error_counter
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_has_error_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_has_error_counter
@@ -720,11 +802,28 @@ msgstr "Número de mensajes con error de envío"
 #: model:ir.model.fields,help:rc_uy_base.field_rc_booking__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer_test_drive__message_unread_counter
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_params_config__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__message_unread_counter
 #: model:ir.model.fields,help:rc_uy_base.field_rc_schedule__message_unread_counter
 msgid "Number of unread messages"
 msgstr "Número de mensajes no leidos"
+
+#. module: rc_uy_base
+#: code:addons/rc_uy_base/models/rc_schedule.py:0
+#, python-format
+msgid ""
+"Para realizar dicha operación las Agenda deben estar en estado Borrador o "
+"Bloqueado."
+msgstr ""
+
+#. module: rc_uy_base
+#: code:addons/rc_uy_base/models/rc_schedule.py:0
+#, python-format
+msgid ""
+"Para realizar dicha operación las Agenda deben estar en estado Borrador o "
+"Disponible."
+msgstr ""
 
 #. module: rc_uy_base
 #: code:addons/rc_uy_base/models/rc_booking.py:0
@@ -740,6 +839,11 @@ msgstr ""
 #, python-format
 msgid ""
 "Para realizar dicha operación las Reservas deben estar en estado Confirmada."
+msgstr ""
+
+#. module: rc_uy_base
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_form_view
+msgid "Permite la búsqueda por día y hora."
 msgstr ""
 
 #. module: rc_uy_base
@@ -797,10 +901,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__resource_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__resource_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__resource_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__resource_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__resource_id
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_search_view
 msgid "Recurso"
+msgstr "Vehículo"
+
+#. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_res_users__rc_human_resource_id
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_search_view
+msgid "Recurso persona"
 msgstr "Instructor"
 
 #. module: rc_uy_base
@@ -813,12 +925,24 @@ msgstr "Instructor"
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_resource_tree_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_search_view
 msgid "Recursos"
+msgstr "Vehículos"
+
+#. module: rc_uy_base
+#: model:ir.actions.act_window,name:rc_uy_base.action_rc_human_resource
+#: model:ir.ui.menu,name:rc_uy_base.menu_rc_human_resource
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_human_resource_tree_view
+msgid "Recursos personas"
 msgstr "Instructores"
+
+#. module: rc_uy_base
+#: model:ir.model,name:rc_uy_base.model_rc_human_resource
+msgid "Repesenta el Recurso Humano que es reservado por la persona."
+msgstr "Repesenta al Instructor"
 
 #. module: rc_uy_base
 #: model:ir.model,name:rc_uy_base.model_rc_resource
 msgid "Repesenta el Recurso que es reservado por la persona."
-msgstr "Instructor que imparte las clases."
+msgstr "Vehículo utilizado en las clases."
 
 #. module: rc_uy_base
 #: model:ir.model,name:rc_uy_base.model_rc_schedule
@@ -841,17 +965,24 @@ msgid "Representa los Exámenes (teórica o práctica) asociados a la persona."
 msgstr "Exámen que debe realizar el estudiante."
 
 #. module: rc_uy_base
-#: code:addons/rc_uy_base/wizard/rc_generate_schedule.py:0
 #: model:ir.model.fields,help:rc_uy_base.field_rc_generate_schedule__resource_ids
+msgid ""
+"Representa los Instructores a tener en cuenta para la generación de la "
+"agenda. Si no se selecciona ninguno, se tendrán en cuenta todos los "
+"Instructores activos."
+msgstr ""
+
+#. module: rc_uy_base
+#: code:addons/rc_uy_base/wizard/rc_generate_schedule.py:0
 #, python-format
 msgid ""
 "Representa los Recursos a tener en cuenta para la generación de la agenda. "
 "Si no se selecciona ninguno, se tendrán en cuenta todos los Recursos "
 "activos."
 msgstr ""
-"Representa los Instructores a tener en cuenta para la generación de la agenda. "
-"Si no se selecciona ninguno, se tendrán en cuenta todos los Instructores "
-"activos."
+"Representa los Instructores a tener en cuenta para la generación de la "
+"agenda. Si no se selecciona ninguno, se tendrán en cuenta todos los "
+"Instructores activos."
 
 #. module: rc_uy_base
 #: model:ir.model,name:rc_uy_base.model_rc_params_config
@@ -860,13 +991,9 @@ msgid ""
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.actions.act_window,name:rc_uy_base.action_form_rc_reserva
-#: model:ir.actions.act_window,name:rc_uy_base.action_rc_reserva
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__booking_id
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__booking_ids
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_form_view
-#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
-#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_short_form_view
 msgid "Reserva"
 msgstr "Clase"
 
@@ -894,34 +1021,45 @@ msgid "Reservar"
 msgstr ""
 
 #. module: rc_uy_base
-#: model:res.groups,name:rc_uy_base.rc_admin_user_group
-msgid "Administrator user"
-msgstr "Administrador"
-
-#. module: rc_uy_base
-#: model:res.groups,name:rc_uy_base.rc_consumer_user_group
-msgid "Consumer user"
-msgstr "Estudiante"
-
-#. module: rc_uy_base
-#: model:res.groups,name:rc_uy_base.rc_resource_user_group
-msgid "Resource user"
-msgstr "Instructor"
-
-#. module: rc_uy_base
 #: model:ir.ui.menu,name:rc_uy_base.menu_rc_reservar_cita
 msgid "Reservar cita"
 msgstr ""
 
 #. module: rc_uy_base
+#: model:ir.actions.act_window,name:rc_uy_base.action_form_rc_reserva
+#: model:ir.actions.act_window,name:rc_uy_base.action_rc_reserva
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_form_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_search_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_short_form_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_reserva_tree_view
 msgid "Reservas"
+msgstr "Clases"
+
+#. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__weekly_booking_qty
+msgid "Reservas semanales (Hrs)"
+msgstr ""
+
+#. module: rc_uy_base
+#: model:res.groups,name:rc_uy_base.rc_resource_user_group
+msgid "Resource user"
+msgstr "Conductor Vehículo"
+
+#. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_has_sms_error
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_has_sms_error
+msgid "SMS Delivery error"
 msgstr ""
 
 #. module: rc_uy_base
 #: code:addons/rc_uy_base/utils/expression.py:0
 #: model:ir.model.fields,help:rc_uy_base.field_rc_consumer__active
+#: model:ir.model.fields,help:rc_uy_base.field_rc_human_resource__active
 #: model:ir.model.fields,help:rc_uy_base.field_rc_resource__active
 #, python-format
 msgid ""
@@ -951,6 +1089,11 @@ msgid "Teórico"
 msgstr ""
 
 #. module: rc_uy_base
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__has_test_drive
+msgid "Tiene exámenes activos?"
+msgstr ""
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__type
 msgid "Tipo"
 msgstr ""
@@ -964,6 +1107,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_unread
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_unread
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_unread
@@ -974,6 +1118,7 @@ msgstr "Mensajes sin leer"
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_booking__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer_test_drive__message_unread_counter
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_params_config__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_resource__message_unread_counter
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_schedule__message_unread_counter
@@ -981,7 +1126,13 @@ msgid "Unread Messages Counter"
 msgstr "Contador de mensajes sin leer"
 
 #. module: rc_uy_base
+#: model:ir.model,name:rc_uy_base.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: rc_uy_base
 #: model:ir.model.fields,field_description:rc_uy_base.field_rc_consumer__users_id
+#: model:ir.model.fields,field_description:rc_uy_base.field_rc_human_resource__users_id
 msgid "Usuario"
 msgstr ""
 
@@ -1007,6 +1158,7 @@ msgstr ""
 #. module: rc_uy_base
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_booking_graph_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_booking_pivot_view
+#: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_consumer_pivot_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_graph_view
 #: model_terms:ir.ui.view,arch_db:rc_uy_base.rc_schedule_pivot_view
 msgid "Vista Reporte"
@@ -1018,9 +1170,13 @@ msgid "rc.generate.schedule.day"
 msgstr ""
 
 #. module: rc_uy_base
-#: model:ir.model.constraint,message:rc_uy_base.constraint_rc_booking_name_uniq
+#: model:ir.model,name:rc_uy_base.model_rc_generate_schedule_hour
+msgid "rc.generate.schedule.hour"
+msgstr ""
+
+#. module: rc_uy_base
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_consumer_name_uniq
-#: model:ir.model.constraint,message:rc_uy_base.constraint_rc_consumer_test_drive_name_uniq
+#: model:ir.model.constraint,message:rc_uy_base.constraint_rc_human_resource_name_uniq
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_params_config_name_uniq
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_resource_name_uniq
 #: model:ir.model.constraint,message:rc_uy_base.constraint_rc_schedule_name_uniq

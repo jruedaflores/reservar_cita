@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rc_human_resource_form_view" model="ir.ui.view">
+            <field name="name">rc.human.resource.form</field>
+            <field name="model">rc.human.resource</field>
+            <field name="arch" type="xml">
+                <form string="Recurso persona">
+                    <header>
+                        <button string="Activar" name="action_active" attrs="{'invisible': [('state', '=', 'active')]}"
+                                type="object" class="oe_highlight" groups="rc_uy_base.rc_admin_user_group"/>
+                        <button string="Inactivar" name="action_inactive" type="object"
+                                attrs="{'invisible': [('state', '!=', 'active')]}"
+                                groups="rc_uy_base.rc_admin_user_group"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archivado" bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}"/>
+                        <group>
+                            <group>
+                                <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="resource_id" options="{'no_create': True, 'no_open': True}"/>
+                            </group>
+                            <group>
+                                <field name="email" widget="email"
+                                       attrs="{'readonly': [('state', '!=', 'draft')],
+                                                'invisible': [('state', '!=', 'draft')]}"/>
+                                <field name="users_id_login" widget="email"
+                                       attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                                <field name="active" invisible="1"/>
+                            </group>
+                        </group>
+                        <!--<group string="Recursos">
+                            <field name="resource_ids" nolabel="1" options="{'no_create': True}">
+                            </field>
+                        </group>-->
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="rc_human_resource_tree_view" model="ir.ui.view">
+            <field name="name">rc.human.resource.tree</field>
+            <field name="model">rc.human.resource</field>
+            <field name="arch" type="xml">
+                <tree string="Recursos personas" decoration-danger="state == 'draft'"
+                      decoration-warning="state == 'inactive'">
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="rc_human_resource_search_view" model="ir.ui.view">
+            <field name="name">rc.human.resource.search</field>
+            <field name="model">rc.human.resource</field>
+            <field name="arch" type="xml">
+                <search string="Recurso persona">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <filter string="Archivados" name="inactive" domain="[('active','=',False)]"/>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Estados" name="groupby_state" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_rc_human_resource" model="ir.actions.act_window">
+            <field name="name">Recursos personas</field>
+            <field name="res_model">rc.human.resource</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="rc_human_resource_tree_view"/>
+        </record>
+
+    </data>
+</odoo>
